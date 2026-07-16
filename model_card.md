@@ -61,29 +61,21 @@ Prompts:
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
+One weakness discovered during experimentation is that the energy score loses its ability to distinguish between songs when a user's preferred energy level sits near the middle of the scale (around 0.5). Because the energy score is calculated as the gap between the user's target and a song's actual energy, a midpoint target means every song in the catalog ends up with a fairly similar energy score — the best and worst songs differ by only about 17 points out of 40, compared to nearly 30 points of separation for users with a strong low or high energy preference. In practice this means the ranking for mid-energy users is almost entirely decided by mood and genre matches, making the energy preference effectively invisible. A user who genuinely wants moderately energetic music will receive the same recommendations as someone who never set an energy preference at all, because the categorical signals drown out the numeric one. This is a form of silent bias: the system appears to respect the user's energy setting, but it has almost no influence on the final output.
 
-Prompts:  
 
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+Seven user profiles were tested: three standard profiles (High-Energy Pop, Chill Lo-Fi, and Deep Intense Rock) and four edge-case profiles designed to stress-test the scoring logic (Orphan Mood, Acoustic Contradiction, Midpoint Energy Trap, and Acoustic High-Energy Clash). For each profile the top five recommendations were inspected alongside their scores and reasons, and a side by side comparison was run after doubling the energy weight and halving the genre weight to see whether reweighting changed the rankings.
 
-Prompts:  
+The most surprising result was that the Deep Intense Rock profile, which intuitively should produce the most distinct and intense recommendations, consistently returned the weakest scores of any profile with a maximum of around 44 points. The cause was that the mood value "angry" is not recognised by any synonym group in the code, so the 40 point mood bonus was never added for any song. A profile that felt clearly defined from a listener's perspective was nearly invisible to the scorer.
 
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
+A second surprise came from the Acoustic Contradiction profile. The top recommendation was Spacewalk Thoughts, an ambient song with no folk genre connection. It beat River Bend Song, the only actual folk song in the top five. River Bend Song had a perfect genre match worth 12.5 points, but its mood tag "sad" did not share a synonym group with the user's preferred mood "calm", so it received zero mood points. Spacewalk Thoughts won purely because its energy value of 0.28 was marginally closer to the target of 0.20 than the other chill-mood songs, giving it a 1.4-point edge over Library Rain. A difference of less than two points in one feature decided the top rank, which made the result feel fragile rather than meaningful.
 
-No need for numeric metrics unless you created some.
+Finally, reweighting energy from 20 to 40 points and genre from 25 to 12.5 produced identical ranking orders across all six profiles, only the scores changed. This confirmed that the weight ratio matters less than the categorical attribute: once mood and genre matches are determined, numeric tuning rarely changes the order.
 
 ---
 

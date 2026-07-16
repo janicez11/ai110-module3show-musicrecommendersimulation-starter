@@ -122,12 +122,12 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         reasons.append("mood match")
 
     if _same_group(song['genre'], user_prefs['favorite_genre'], GENRE_GROUPS):
-        score += 25
+        score += 12.5
         reasons.append("genre match")
 
-    energy_pts = 20 * (1 - abs(user_prefs['target_energy'] - song['energy']))
+    energy_pts = 40 * (1 - abs(user_prefs['target_energy'] - song['energy']))
     score += energy_pts
-    if energy_pts >= 15:
+    if energy_pts >= 30:
         reasons.append("energy close")
 
     if user_prefs.get('likes_acoustic', False) and song['acousticness'] > 0.6:

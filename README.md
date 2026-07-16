@@ -166,7 +166,111 @@ Top recommendations:
    Because: energy close
 ```
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
+=======================================================
+Profile: HIGH_ENERGY_POP
+  genre=pop, mood=happy, high energy, non-acoustic
+=======================================================
+  1. Sunrise City - Score: 89.30
+     Because: mood match, genre match, energy close
+  2. Rooftop Lights - Score: 86.90
+     Because: mood match, genre match, energy close
+  3. Gym Hero - Score: 51.30
+     Because: genre match, energy close
+  4. Storm Runner - Score: 39.60
+     Because: energy close
+  5. Pulse Wave - Score: 39.20
+     Because: energy close
+
+=======================================================
+Profile: CHILL_LOFI
+  genre=lo-fi, mood=chill, low energy, acoustic
+=======================================================
+  1. Library Rain - Score: 103.50
+     Because: mood match, genre match, energy close, acoustic match
+  2. Midnight Coding - Score: 100.70
+     Because: mood match, genre match, energy close, acoustic match
+  3. Spacewalk Thoughts - Score: 93.80
+     Because: mood match, energy close, acoustic match
+  4. Coffee Shop Stories - Score: 90.20
+     Because: mood match, energy close, acoustic match
+  5. Focus Flow - Score: 61.50
+     Because: genre match, energy close, acoustic match
+
+=======================================================
+Profile: DEEP_INTENSE_ROCK
+  genre=rock, mood=angry, high energy, non-acoustic
+=======================================================
+  1. Storm Runner - Score: 50.90
+     Because: genre match, energy close
+  2. Iron Cathedral - Score: 39.60
+     Because: energy close
+  3. Gym Hero - Score: 39.20
+     Because: energy close
+  4. Pulse Wave - Score: 37.20
+     Because: energy close
+  5. Street Anthem - Score: 36.80
+     Because: energy close
+
+=======================================================
+Profile: ORPHAN_MOOD
+  genre=rock, mood=angry, high energy, non-acoustic
+=======================================================
+  1. Storm Runner - Score: 52.10
+     Because: genre match, energy close
+  2. Pulse Wave - Score: 39.20
+     Because: energy close
+  3. Gym Hero - Score: 38.80
+     Because: energy close
+  4. Street Anthem - Score: 38.80
+     Because: energy close
+  5. Iron Cathedral - Score: 37.60
+     Because: energy close
+
+=======================================================
+Profile: ACOUSTIC_CONTRADICTION
+  genre=folk, mood=calm, low energy, non-acoustic
+=======================================================
+  1. Spacewalk Thoughts - Score: 76.80
+     Because: mood match, energy close
+  2. Library Rain - Score: 74.00
+     Because: mood match, energy close
+  3. Coffee Shop Stories - Score: 73.20
+     Because: mood match, energy close
+  4. Midnight Coding - Score: 71.20
+     Because: mood match, energy close
+  5. River Bend Song - Score: 48.50
+     Because: genre match, energy close
+
+=======================================================
+Profile: MIDPOINT_ENERGY_TRAP
+  genre=electronic, mood=energetic, medium energy, non-acoustic
+=======================================================
+  1. Pulse Wave - Score: 77.30
+     Because: mood match, genre match
+  2. Storm Runner - Score: 63.60
+     Because: mood match
+  3. Gym Hero - Score: 62.80
+     Because: mood match
+  4. Iron Cathedral - Score: 61.60
+     Because: mood match
+  5. Night Drive Loop - Score: 42.50
+     Because: genre match, energy close
+
+=======================================================
+Profile: ACOUSTIC_HIGH_ENERGY_CLASH
+  genre=folk, mood=energetic, high energy, acoustic
+=======================================================
+  1. Iron Cathedral - Score: 78.40
+     Because: mood match, energy close
+  2. Gym Hero - Score: 77.20
+     Because: mood match, energy close
+  3. Storm Runner - Score: 76.40
+     Because: mood match, energy close
+  4. Pulse Wave - Score: 75.20
+     Because: mood match, energy close
+  5. Dusty Roads - Score: 49.10
+     Because: genre match, acoustic match
+
 
 ---
 
