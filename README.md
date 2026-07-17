@@ -145,26 +145,6 @@ You can add more tests in `tests/test_recommender.py`.
 
 Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
 
-```
-User profile: genre=pop, mood=happy, high energy, non-acoustic
-
-Top recommendations:
-
-1. Sunrise City - Score: 85.00
-   Because: mood match, genre match, energy close
-
-2. Rooftop Lights - Score: 83.80
-   Because: mood match, genre match, energy close
-
-3. Gym Hero - Score: 42.80
-   Because: genre match, energy close
-
-4. Fuego del Sur - Score: 19.40
-   Because: energy close
-
-5. Street Anthem - Score: 19.00
-   Because: energy close
-```
 
 =======================================================
 Profile: HIGH_ENERGY_POP
@@ -276,25 +256,19 @@ Profile: ACOUSTIC_HIGH_ENERGY_CLASH
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
-
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+- Reweighted genre and enegy: doubled energy weight and halved genre weight. Rankings stayed the same, only scores changed. Shows that mood determines most of the order weight.
+- Tested 7 user profiles — 3 standard (High-Energy Pop, Chill Lo-Fi, Deep Intense Rock) and 4 edge cases designed to expose scoring gaps.
+- Missing mood in dataset: Cannot find matching mood from dataset lead to it being ignored so the weight for that is missing in the score, which greatly affects ranking.
+- Setting energy to be in the middle: Made the energy preference meaningless as the energy score points were nearly the same across all songs.
+- ACouustic preference mismatch point: set `likes_acoustic=False` with `target_acousticness=0.95`. The acoustic target had zero effect on scoring since only the boolean is read.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+- Mood and genre dominate — a missing synonym (e.g. "angry") silently breaks an entire user profile
+- Only 4 of 9 preference fields are actually used in scoring; the rest are ignored
+- Acoustic preference is a binary on/off bonus, not a gradient so this creates a hard cliff at acousticness 0.6
 
 ---
 

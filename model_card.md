@@ -59,10 +59,5 @@ The most immediate fix would be expanding the mood synonym groups to cover moods
 
 ## 9. Personal Reflection  
 
-A few sentences about your experience.  
+This project helped me understand how recommender apps like Spotify can work behind the scene and how different scoring logic approaches can greatly affect the recommended output. I'm not sure what is the best approach still, but each implementation has their own reasons and patterns and the recommendations are valid to their reasons. While the AI suggested many options for how to approach with the scoring, I chose the simplest method that I can understand, so that I can still have full control over the process versus the AI providing most of the structuring. I also realized that the data it gets fed, in this case is the songs list, is the biggest influencing factor. If the data is too small or limited in variety, then the accuracy of the recommendations can be skewed as well. 
 
-Prompts:  
-
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
