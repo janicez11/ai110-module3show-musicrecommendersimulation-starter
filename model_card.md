@@ -2,60 +2,32 @@
 
 ## 1. Model Name  
 
-Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+MoodMatcher 
 
 ---
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
-
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+Based on a user profile, recommend top 5 songs from a catalog that most matches the vibe of the user.
 
 ---
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
 
-Prompts:  
-
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+Every song gets a score based on how well it matches four things that the user cares about: mood, genre, energy, and whether or not they like acoustic music. Mood is worth the most points, if the vibe is wrong, nothing else matters. Genre adds a smaller bonus. Energy is scored by closeness, so the closer a song's energy is to the target, the more points it earns. If they like acoustic music, any highly acoustic song gets a small extra boost. The five songs with the highest total score become their recommendations.
 
 ---
 
 ## 4. Data  
 
-Describe the dataset the model uses.  
-
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
+The catalog contains 18 songs, each listed with genre, mood, energy, tempo, danceability, valence, and acousticness. Genres include pop, lo-fi, rock, electronic, hip-hop, folk, jazz, classical, and a few others. Moods range from chill and happy to intense, melancholic, and romantic. The catalog skews toward high-energy tracks, half the songs have energy above 0.65 which disadvantages low energy listeners. Several moods and genres appear only once, so some users have very little to choose from.
 
 ---
 
 ## 5. Strengths  
 
-Where does your system seem to work well  
-
-Prompts:  
-
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
+The system works best when a user's mood and genre align with well represented parts of the catalog. The Chill Lo-Fi profile scored highest of all seven tested because mood, genre, energy, and acoustic preferenced were all used together, producing a clear top five. In general the scorer is most reliable when preferences are specific enough to match several attributes at once, making the ranking feel meaningful rather than arbitrary.
 
 ---
 
@@ -81,14 +53,7 @@ Finally, reweighting energy from 20 to 40 points and genre from 25 to 12.5 produ
 
 ## 8. Future Work  
 
-Ideas for how you would improve the model next.  
-
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
+The most immediate fix would be expanding the mood synonym groups to cover moods like "angry" that the scorer currently ignores. Replacing the acoustic boolean with a continuous proximity score rather than just using an either or evaluation would have more meaning. Valence, danceability, and tempo are already stored in the catalog but unused in scoring so they could be used in the future as well. 
 
 ---
 
