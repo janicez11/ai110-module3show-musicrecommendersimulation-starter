@@ -9,6 +9,8 @@ You will implement the functions in recommender.py:
 - recommend_songs
 """
 
+from tabulate import tabulate
+
 from recommender import load_songs, recommend_songs
 
 
@@ -138,12 +140,25 @@ def main() -> None:
     acoustic_label = "acoustic" if user_prefs.get('likes_acoustic', False) else "non-acoustic"
     print(f"\nUser profile: genre={user_prefs['favorite_genre']}, mood={user_prefs['favorite_mood']}, "
           f"{energy_label}, {acoustic_label}")
-    print("\nTop recommendations:\n")
-    for i, rec in enumerate(recommendations, start=1):
-        song, score, explanation = rec
-        print(f"{i}. {song['title']} - Score: {score:.2f}")
-        print(f"   Because: {explanation}")
-        print()
+    print("\nTop 5 recommendations:\n")
+
+    rows = []
+    for i, (song, score, explanation) in enumerate(recommendations, start=1):
+        rows.append([
+            i,
+            song['title'],
+            song['artist'],
+            song['genre'],
+            song['mood'],
+            f"{song['energy']:.2f}",
+            f"{song['acousticness']:.2f}",
+            f"{score:.1f}",
+            explanation,
+        ])
+
+    headers = ["#", "Title", "Artist", "Genre", "Mood", "Energy", "Acoustic", "Score", "Reasons"]
+    print(tabulate(rows, headers=headers, tablefmt="grid"))
+    print()
 
 
 if __name__ == "__main__":
